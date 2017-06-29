@@ -1,0 +1,29 @@
+doctype html
+html( lang="en" )
+  head
+    title= title
+    meta( charset='utf-8' )
+    meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta( name='description', content='Doing cool stuff with Bootstrap and Pug')
+    //- Bootstrap Theme
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+  body(style="padding-bottom:10rem;")
+    .container
+      
+    script( src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' )
+    script( src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' )
+    include mixins
+    +nav("TomorrowCode", "dropdown_menu", "inverse")
+      +nav_item( "/index" ) Home
+      +nav_item( "/tasks" ) Coding Tasks
+      +nav_item( "/users" ) Users and Teachers
+      +nav_item_dropdown( "#" )( label="More")
+        +nav_item( "#" ) My Code
+        +nav_item( "#" ) My Progress
+        +nav_item( "#" ) My Class
+        +nav_divider
+        +nav-header Messages
+        +nav_item( "#" ) Friends
+        +nav_item( "#" ) Teachers
+    block content
