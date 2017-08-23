@@ -2,18 +2,22 @@ extends layout
 
 
 block content
-  //+nav("TomorrowCode", "dropdown_menu", "inverse")
-    +nav_item( "/index", "active" ) Home
-    +nav_item( "/tasks" ) Coding Tasks
-    +nav_item( "/users" ) Users and Teachers
-    +nav_item_dropdown( "#" )( label="More")
-      +nav_item( "#" ) My Code
-      +nav_item( "#" ) My Progress
-      +nav_item( "#" ) My Class
-      +nav_divider
-      +nav-header Messages
-      +nav_item( "#" ) Friends
-      +nav_item( "#" ) Teachers
   div.container
     +panel("Coding The Future", "default") Coding The Future is a site to help students worldwide learn how to use code, even if it's just a few basic tricks.  
-    
+  div#carousel.carousel.slide(data-ride='carousel')
+    ol.carousel-indicators
+      li(data-target='#carousel' data-slide-to='0' class='active')
+      li(data-target='#carousel' data-slide-to='1' )
+      li(data-target='#carousel' data-slide-to='2' )
+      li(data-target='#carousel' data-slide-to='3' )
+    div.carousel-inner
+      div.item.active: img.center-block(src='http://insidefolks.com/wp-content/uploads/2016/10/norway_20161002-1000x300.jpg' alt="First Picture")
+      div.item: img.center-block(src='https://www.koenmeteenk.nl/indiegogo/indiegogo_6.jpg' alt="Second Picture")
+      div.item: img.center-block(src='https://nordicsaga.com/assets/images/Iceland/Banner_Icelandaurora.jpg' alt="Third Picture")
+      div.item: img.center-block(src='https://images.robertharding.com/preview/RF/RH_RF/PANORAMIC/1179-2083.jpg' alt="Fourth Picture")
+    a.left.carousel-control(href='#carousel' role='button' data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+      span.sr-only Previous
+    a.right.carousel-control(href='#carousel' role='button' data-slide='next')
+      span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+      span.sr-only Next

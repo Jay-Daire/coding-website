@@ -4,7 +4,7 @@ html( lang="en" )
     title= title
     meta( charset='utf-8' )
     meta( http-equiv='X-UA-Compatible', content='IE=edge' )
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta( name='viewport', content='width=device-width, initial-scale=1.0')
     meta( name='description', content='Doing cool stuff with Bootstrap and Pug')
     //- Bootstrap Theme
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
@@ -14,10 +14,60 @@ html( lang="en" )
     script( src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' )
     script( src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' )
     include mixins
+    nav.navbar.navbar-inverse( role="navigation" )
+      .navbar-header
+        button.navbar-toggle.collapsed( type="button", data-toggle="collapse", data-target="#navbar-inverse", aria-expanded="false", aria-controls="navbar")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href="#") TomorrowCode
+ 
+      #navbar-inverse.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li.active: a( href="/index") Home
+          li: a( href="/tasks" ) Coding Tasks
+            span( class ="badge") 5
+          li: a( href="/users" ) Students and Teachers
+            span( class ="badge") 9
+          li.dropdown
+            a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) More
+              span.caret
+            ul.dropdown-menu( role="menu" )
+              li: a( href="#" ) My Code
+              li: a( href="#" ) My Tasks
+              li: a( href="#" ) My Progress
+              li.divider
+              li.dropdown-header Messages
+              li: a( href="#" ) Friends
+              li: a( href="#" ) Teachers
+                span( class ="label label-info") New
+        ul.nav.navbar-nav.navbar-right
+          li.dropdown
+            if (!user)
+              a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) User
+                span.caret
+              ul.dropdown-menu( role="menu" )
+                li: a( href="/login" ) Sign In
+                li: a( href="/register" ) Sign Up
+            if (user)
+              a.dropdown-toggle( href="#", data-toggle="dropdown", role="button", aria-expanded="false" ) #{user.username}
+                span.caret
+              ul.dropdown-menu( role="menu" )
+                li: a( href="/logout" ) Sign out
+                li: a( href="/account" ) Account
+
+
+
+
+
+
+
+//-
     +nav("TomorrowCode", "dropdown_menu", "inverse")
-      +nav_item( "/index" ) Home
+      +nav_item( "/index", "active") Home
       +nav_item( "/tasks" ) Coding Tasks
-      +nav_item( "/users" ) Users and Teachers
+      +nav_item( "/users" ) Students and Teachers
       +nav_item_dropdown( "#" )( label="More")
         +nav_item( "#" ) My Code
         +nav_item( "#" ) My Progress
@@ -26,4 +76,8 @@ html( lang="en" )
         +nav-header Messages
         +nav_item( "#" ) Friends
         +nav_item( "#" ) Teachers
+      +nav_item_dropdown( "#" )( label="User")
+        +nav_item( "/login" ) Sign In
+        +nav_item( "/register" ) Sign Up
+-//
     block content

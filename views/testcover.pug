@@ -1,0 +1,47 @@
+doctype html
+html( lang="en" )
+  head
+    meta( charset='utf-8' )
+    meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+    meta( name='viewport', content='width=device-width, initial-scale=1.0')
+    meta( name='description', content='Doing cool stuff with Bootstrap and Pug')
+    //- Bootstrap Theme
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/cover.css', type='text/css')
+  body(style="padding-bottom:10rem;")
+    script( src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' )
+    script( src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' )
+    div(class="site-wrapper")
+      div(class="site-wrapper-inner")
+        div(class="cover-container")
+          div(class="masthead clearfix")
+            div(class="inner")
+              h3(class="masthead-brand") TomorrowCode
+              nav
+                ul(class="nav masthead-nav")
+                  li(class="active")
+                    a(href="/index") Home
+                  li
+                    a(href="#") Features
+                  li
+                    a(href="#") Contact
+          div(class="inner cover")
+            h1(class="cover-heading") Welcome to TomorrowCode!
+            if (!user)
+              p(class="lead") Create or use an account here!
+              p(class="lead")
+                a(href="/login", class="btn btn-lg btn-default") Login
+                .nbsp
+                a(href="/register", class="btn btn-lg btn-default") Signup
+            if (user)
+              p(class="lead") Welcome back, #{user.username}
+              p(class="lead")
+                a(href="/logout", class="btn btn-lg btn-default") Logout
+                .nbsp
+                a(href="/index", class="btn btn-lg btn-default") Home
+          div(class="mastfoot")
+            div(class="inner")
+        
+        
+                  
+    
